@@ -1,11 +1,12 @@
 package com.alexdev.entities;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Buy {
+public class Buy implements Serializable {
 
     private Long id;
     private Instant date;

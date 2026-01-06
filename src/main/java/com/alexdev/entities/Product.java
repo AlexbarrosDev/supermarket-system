@@ -1,8 +1,9 @@
 package com.alexdev.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Product {
+public class Product implements Serializable {
 
     private Long id;
     private String name;
