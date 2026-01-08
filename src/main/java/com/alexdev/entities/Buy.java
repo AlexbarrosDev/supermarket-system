@@ -18,8 +18,7 @@ public class Buy implements Serializable {
     public Buy() {
     }
 
-    public Buy(Long id, Instant date, Client client) {
-        this.id = id;
+    public Buy(Instant date, Client client) {
         this.date = date;
         this.client = client;
     }

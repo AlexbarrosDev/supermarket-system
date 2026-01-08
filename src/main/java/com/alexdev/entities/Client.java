@@ -7,13 +7,12 @@ public class Client implements Serializable {
 
     private Long id;
     private String name;
-    private Long cpf;
+    private String cpf;
 
     public Client() {
     }
 
-    public Client(Long id, String name, Long cpf) {
-        this.id = id;
+    public Client(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
     }
@@ -34,11 +33,11 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

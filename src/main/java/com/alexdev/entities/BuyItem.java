@@ -18,8 +18,7 @@ public class BuyItem implements Serializable {
     public BuyItem() {
     }
 
-    public BuyItem(Long id, Buy buy, Product product, Integer quantity, Double unitPrice) {
-        this.id = id;
+    public BuyItem(Buy buy, Product product, Integer quantity, Double unitPrice) {
         this.buy = buy;
         this.product = product;
         this.quantity = quantity;
