@@ -1,11 +1,15 @@
 package com.alexdev.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Mark implements Serializable {
 
+
     private Long id;
+
     private String name;
 
     public Mark() {
@@ -17,10 +21,6 @@ public class Mark implements Serializable {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

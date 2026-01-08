@@ -27,10 +27,6 @@ public class Buy implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Instant getDate() {
         return date;
     }

@@ -29,10 +29,6 @@ public class BuyItem implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Buy getBuy() {
         return buy;
     }
