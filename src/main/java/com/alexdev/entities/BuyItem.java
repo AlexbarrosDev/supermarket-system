@@ -1,18 +1,30 @@
 package com.alexdev.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_buy_item")
 public class BuyItem implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "buy_id", nullable = false)
     private Buy buy;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Column(nullable = false)
     private Integer quantity;
 
+    @Column(nullable = false)
     private Double unitPrice;
 
     public BuyItem() {
@@ -59,6 +71,10 @@ public class BuyItem implements Serializable {
 
     public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public Double getSubTotal() {
+        return quantity * unitPrice;
     }
 
     @Override
