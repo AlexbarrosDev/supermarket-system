@@ -1,11 +1,12 @@
 spring:
 
   application:
-
     name: supermarket-system
 
-  datasource:
+  profiles:
+    active: test
 
+  datasource:
     url: jdbc:mysql://localhost:3306/supermarket_provasi?useTimezone=true&serverTimezone=UTC
 
     username: app_user
@@ -13,15 +14,16 @@ spring:
     password: senha123
 
   jpa:
-    hibernate:
 
-      ddl-auto: update
+    hibernate:
+      ddl-auto: create
 
     open-in-view: false
 
-    show-sql: false
+    show-sql: true
 
 logging:
+
   level:
     root: WARN
     br.com.alexdev: INFO
