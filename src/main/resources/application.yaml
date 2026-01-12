@@ -4,7 +4,7 @@ spring:
     name: supermarket-system
 
   profiles:
-    active: test
+    active: false
 
   datasource:
     url: jdbc:mysql://localhost:3306/supermarket_provasi?useTimezone=true&serverTimezone=UTC
@@ -16,7 +16,7 @@ spring:
   jpa:
 
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
     open-in-view: false
 
