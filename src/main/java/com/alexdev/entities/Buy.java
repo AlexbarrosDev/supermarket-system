@@ -23,7 +23,7 @@ public class Buy implements Serializable {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @OneToMany(mappedBy = "buy", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "buy", cascade = CascadeType.ALL)
     private List<BuyItem> items = new ArrayList<>();
 
     public Buy() {
@@ -56,6 +56,10 @@ public class Buy implements Serializable {
 
     public List<BuyItem> getItems() {
         return items;
+    }
+
+    public void setItems(List<BuyItem> items) {
+        this.items = items;
     }
 
     public Double getTotal() {
