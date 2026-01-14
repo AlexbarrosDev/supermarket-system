@@ -3,6 +3,13 @@
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0-green)
 ![Status](https://img.shields.io/badge/Status-%20Finalizado-yellow)
 
+---
+
+## Diagrama de Classes
+![Diagrama de Classes](docs/images/diagramaSupermarket.png)
+
+---
+
 ## Sobre o projeto
 
 Projeto de API REST desenvolvido em Java com Spring Boot, inspirado em um sistema de supermercado real, com foco em regras de negócio e integridade de dados.
