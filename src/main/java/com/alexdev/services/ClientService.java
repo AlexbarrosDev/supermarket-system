@@ -5,6 +5,7 @@ import com.alexdev.dto.response.ClientDTO;
 
 import com.alexdev.entities.Client;
 
+import com.alexdev.exceptions.ResourceNotFoundException;
 import com.alexdev.mappers.ClientMapper;
 
 import com.alexdev.repositories.ClientRepository;
@@ -34,7 +35,7 @@ public class ClientService {
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
         Client entity = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Client not fond"));
+                .orElseThrow(() -> new ResourceNotFoundException("Client not fond"));
         return ClientMapper.entityToDTO(entity);
     }
 

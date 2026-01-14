@@ -5,6 +5,8 @@ import com.alexdev.dto.response.MarkDTO;
 
 import com.alexdev.entities.Mark;
 
+import com.alexdev.exceptions.BusinessException;
+import com.alexdev.exceptions.ResourceNotFoundException;
 import com.alexdev.mappers.MarkMapper;
 
 import com.alexdev.repositories.MarkRepository;
@@ -38,17 +40,17 @@ public class MarkService {
     @Transactional(readOnly = true)
     public MarkDTO findById(Long id) {
         Mark entity = markRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Mark not found"));
+                .orElseThrow(()-> new ResourceNotFoundException("Mark not found"));
         return MarkMapper.entityToDTO(entity);
     }
 
     @Transactional
     public void delete(Long id) {
-        Mark mark = markRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Mark not found"));
+        markRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Mark not found"));
 
         if (productRepository.existsByMarkId(id)) {
-            throw new IllegalStateException(
+            throw new BusinessException(
                     "Cannot delete mark: it is being used by products");
         }
         markRepository.deleteById(id);
@@ -56,6 +58,10 @@ public class MarkService {
 
     @Transactional
     public MarkDTO create(MarkCreateDTO markCreateDTO) {
+        if (markCreateDTO.name() == null || markCreateDTO.name().isBlank()) {
+            throw new BusinessException("Mark name must not be null or blank");
+        }
+
         Mark entity = new Mark(markCreateDTO.name());
         return MarkMapper.entityToDTO(markRepository.save(entity));
     }

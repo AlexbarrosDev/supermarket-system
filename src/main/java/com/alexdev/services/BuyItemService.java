@@ -2,6 +2,7 @@ package com.alexdev.services;
 
 import com.alexdev.dto.response.BuyItemDTO;
 import com.alexdev.entities.BuyItem;
+import com.alexdev.exceptions.ResourceNotFoundException;
 import com.alexdev.mappers.BuyItemMapper;
 import com.alexdev.repositories.BuyItemRepository;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class BuyItemService {
     public BuyItemDTO findById(Long id) {
 
         BuyItem entity = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("BuyItem not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("BuyItem not found"));
         return BuyItemMapper.entityToDTO(entity);
     }
 }

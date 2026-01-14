@@ -3,6 +3,8 @@ package com.alexdev.services;
 import com.alexdev.dto.request.CategoryCreateDTO;
 import com.alexdev.dto.response.CategoryDTO;
 import com.alexdev.entities.Category;
+import com.alexdev.exceptions.BusinessException;
+import com.alexdev.exceptions.ResourceNotFoundException;
 import com.alexdev.mappers.CategoryMapper;
 import com.alexdev.repositories.CategoryRepository;
 import com.alexdev.repositories.ProductRepository;
@@ -33,17 +35,17 @@ public class CategoryService {
     @Transactional(readOnly = true)
     public CategoryDTO findById(Long id) {
         Category entity = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
         return CategoryMapper.entityToDTO(entity);
     }
 
     @Transactional
     public void delete(Long id) {
-        Category category = repository.findById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("Category not found"));
+        repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
         if (productRepository.existsByCategoryId(id)) {
-            throw new IllegalStateException(
+            throw new BusinessException(
                     "Cannot delete category: it is being used by product");
         }
         repository.deleteById(id);
@@ -51,6 +53,9 @@ public class CategoryService {
 
     @Transactional
     public CategoryDTO create(CategoryCreateDTO categoryCreateDTO) {
+        if (categoryCreateDTO.name() == null || categoryCreateDTO.name().isBlank()) {
+            throw new BusinessException("Category name must not be null or blank");
+        }
         Category entity = new Category(categoryCreateDTO.name());
         return CategoryMapper.entityToDTO(repository.save(entity));
     }

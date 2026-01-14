@@ -7,8 +7,8 @@ import com.alexdev.entities.Buy;
 import com.alexdev.entities.BuyItem;
 import com.alexdev.entities.Client;
 import com.alexdev.entities.Product;
+import com.alexdev.exceptions.ResourceNotFoundException;
 import com.alexdev.mappers.BuyMapper;
-import com.alexdev.repositories.BuyItemRepository;
 import com.alexdev.repositories.BuyRepository;
 import com.alexdev.repositories.ClientRepository;
 import com.alexdev.repositories.ProductRepository;
@@ -46,7 +46,7 @@ public class BuyService {
     public BuyDTO findById(Long id) {
 
         Buy entity = buyRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Buy not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Buy not found"));
         return BuyMapper.entityToDTO(entity);
     }
 
@@ -54,7 +54,7 @@ public class BuyService {
     public BuyDTO create(BuyCreateDTO buyCreateDTO) {
 
         Client client = clientRepository.findById(buyCreateDTO.ClientId())
-                .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
 
         Buy buy = new Buy();
         buy.setDate(Instant.now());
@@ -65,7 +65,7 @@ public class BuyService {
         for (BuyItemCreateDTO x : buyCreateDTO.BuyItems()) {
 
             Product product =  productRepository.findById(x.productId())
-                    .orElseThrow(() -> new IllegalArgumentException("Product not found"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
             BuyItem buyItem = new BuyItem(buy,
                     product,
