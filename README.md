@@ -212,7 +212,7 @@ Compras não podem ser alteradas ou removidas após criadas.
 ## Autor
 
 **Autor:** Alex Barros
-- Buri - SP
+- Itapetininga - SP
 - Estudante de ADS / Desenvolvedor Back-End Java
 
 ## Contato
