@@ -1,14 +1,25 @@
 package com.alexdev.mappers;
 
-import com.alexdev.dto.response.ClientDTO;
-import com.alexdev.entities.Client;
+import com.alexdev.dtos.request.client.ClientCreateDTO;
+import com.alexdev.dtos.response.client.ClientDetailsDTO;
+import com.alexdev.domain.entities.Client;
+import com.alexdev.dtos.response.client.ClientSummaryDTO;
+import org.mapstruct.Mapper;
 
-public class ClientMapper {
+import java.util.List;
 
-    public static ClientDTO entityToDTO(Client client) {
-        if (client == null) {
-            return null;
-        }
-        return new ClientDTO(client.getId(), client.getName());
-    }
+@Mapper(componentModel = "spring", uses = {AddressMapper.class})
+public interface ClientMapper {
+
+    Client clientRequestDTOToClientEntity(ClientCreateDTO clientCreateDTO);
+
+    ClientDetailsDTO clientEntityToClientDetailsDTO(Client client);
+
+    ClientSummaryDTO clientEntityToClientSummaryDTO(Client client);
+
+    List<Client> clientRequestDTOListToClientList(List<ClientCreateDTO> clientsRequestDTO);
+
+    List<ClientDetailsDTO> clientEntityListToClientDetailsDTOList(List<Client> clients);
+
+    List<ClientSummaryDTO> clientEntityListToClientSummaryDTOList(List<Client> clients);
 }

@@ -1,14 +1,20 @@
 package com.alexdev.mappers;
 
-import com.alexdev.dto.response.CategoryDTO;
-import com.alexdev.entities.Category;
+import com.alexdev.dtos.request.category.CategoryCreateDTO;
+import com.alexdev.dtos.response.category.CategoryDetailsDTO;
+import com.alexdev.domain.entities.Category;
+import org.mapstruct.Mapper;
 
-public class CategoryMapper {
+import java.util.List;
 
-    public static CategoryDTO entityToDTO(Category category) {
-        if (category == null) {
-            return null;
-        }
-        return new CategoryDTO(category.getId(), category.getName());
-    }
+@Mapper(componentModel = "spring")
+public interface CategoryMapper {
+
+    Category categoryRequestDTOToCategoryEntity(CategoryCreateDTO categoryCreateDTO);
+
+    CategoryDetailsDTO categoryEntityToCategoryDetailsDTO(Category category);
+
+    List<Category> categoryRequestDTOListToCategoryEntityList(List<CategoryCreateDTO> categoriesRequestDTO);
+
+    List<CategoryDetailsDTO> categoryEntityListToCategoryDetailsDTOList(List<Category> categories);
 }

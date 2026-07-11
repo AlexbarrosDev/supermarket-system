@@ -1,18 +1,31 @@
 package com.alexdev.mappers;
 
-import com.alexdev.dto.response.ProductDTO;
-import com.alexdev.entities.Product;
+import com.alexdev.dtos.request.product.ProductCreateDTO;
+import com.alexdev.dtos.response.product.ProductSummaryDTO;
+import com.alexdev.dtos.response.product.ProductDetailsDTO;
+import com.alexdev.domain.entities.Product;
+import org.mapstruct.Mapper;
 
-public class ProductMapper {
+import java.util.List;
 
-    public static ProductDTO entityToDTO(Product product) {
-        if (product == null) {
-            return null;
-        }
-        return new ProductDTO(product.getId(),
-                product.getName(),
-                product.getPrice(),
-                CategoryMapper.entityToDTO(product.getCategory()),
-                MarkMapper.entityToDTO(product.getMark()));
-    }
+@Mapper(
+        componentModel = "spring",
+        uses = {
+                CategoryMapper.class,
+                GroupMapper.class
+        })
+public interface ProductMapper {
+
+
+    Product productRequestDTOToProductEntity(ProductCreateDTO productCreateDTO);
+
+    ProductDetailsDTO productEntityToProductDetailsDTO(Product product);
+
+    ProductSummaryDTO productEntityToProductSummaryDTO(Product product);
+
+    List<Product> productRequestDTOListToProductEntityList(List<ProductCreateDTO> productsRequestDTO);
+
+    List<ProductDetailsDTO> productEntityListToProductDetailsDTOList(List<Product> products);
+
+    List<ProductSummaryDTO> productEntityListToProductSummaryDTOList(List<Product> products);
 }
