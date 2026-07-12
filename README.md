@@ -1,227 +1,238 @@
-# Projeto Supermarket-system
+# Supermarket System
+
 ![Java](https://img.shields.io/badge/Java-21-blue)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0-green)
-![Status](https://img.shields.io/badge/Status-%20Refatorando-yellow)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.14-brightgreen)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-success)
 
 ---
 
-## Diagrama de Classes
-![Diagrama de Classes](docs/images/diagramaSupermarket.png)
+## 📖 Sobre o projeto
+
+O **Supermarket System** é uma API REST desenvolvida em **Java** utilizando **Spring Boot**, inspirada em um sistema de gerenciamento de supermercado.
+
+O projeto foi criado com foco em aprendizado prático e aplicação de boas práticas de desenvolvimento back-end, utilizando arquitetura em camadas, DTOs, mapeamento entre objetos, tratamento global de exceções, migrações de banco de dados e regras de negócio.
+
+Além das funcionalidades de CRUD, o sistema implementa validações para garantir a integridade dos dados e refletir cenários encontrados em aplicações reais.
 
 ---
 
-## Sobre o projeto
+## 📌 Principais funcionalidades
 
-Projeto de API REST desenvolvido em Java com Spring Boot, inspirado em um sistema de supermercado real, com foco em regras de negócio e integridade de dados.
-O objetivo é aplicar na prática conceitos de arquitetura em camadas, regras de negócio, DTOs,
-tratamento de exceções e boas práticas no desenvolvimento back-end.
-
-Este projeto foi criado com foco em aprendizado prático e evolução técnica.
+- Cadastro de produtos
+- Cadastro de categorias
+- Cadastro de grupos
+- Cadastro de clientes
+- Cadastro de endereços
+- Registro de vendas
+- Registro de itens da venda
+- Alteração de status de clientes
+- Alteração de status de produtos
+- Alteração de status das vendas
+- Validações de regras de negócio
+- Tratamento global de exceções
+- Documentação automática da API
 
 ---
 
-## Tecnologias utilizadas
+## 🛠 Tecnologias
 
 - Java 21
-- Spring Boot
+- Spring Boot 3.5
 - Spring Data JPA
 - Hibernate
 - MySQL
+- Flyway
+- MapStruct
+- Lombok
+- Spring Validation
+- SpringDoc OpenAPI (Swagger)
 - Maven
 
 ---
 
-## Estrutura de pastas
+## 📂 Arquitetura
+
+O projeto segue uma arquitetura em camadas:
 
 ```text
-src/
-├── main
-│   ├── java
-│   │   └── com
-│   │       └── alexdev
-│   │           ├── config
-│   │           │   └── TestConfig.java
-│   │           ├── controllers
-│   │           │   ├── BuyController.java
-│   │           │   ├── BuyItemController.java
-│   │           │   ├── CategoryController.java
-│   │           │   ├── ClientController.java
-│   │           │   ├── MarkController.java
-│   │           │   └── ProductController.java
-│   │           ├── dto
-│   │           │   ├── request
-│   │           │   │   ├── BuyCreateDTO.java
-│   │           │   │   ├── BuyItemCreateDTO.java
-│   │           │   │   ├── CategoryCreateDTO.java
-│   │           │   │   ├── ClientCreateDTO.java
-│   │           │   │   ├── MarkCreateDTO.java
-│   │           │   │   └── ProductCreateDTO.java
-│   │           │   └── response
-│   │           │       ├── BuyDTO.java
-│   │           │       ├── BuyItemDTO.java
-│   │           │       ├── CategoryDTO.java
-│   │           │       ├── ClientDTO.java
-│   │           │       ├── MarkDTO.java
-│   │           │       └── ProductDTO.java
-│   │           ├── entities
-│   │           │   ├── BuyItem.java
-│   │           │   ├── Buy.java
-│   │           │   ├── Category.java
-│   │           │   ├── Client.java
-│   │           │   ├── Mark.java
-│   │           │   └── Product.java
-│   │           ├── exceptions
-│   │           │   ├── BusinessException.java
-│   │           │   ├── handler
-│   │           │   │   ├── GlobalExceptionHandler.java
-│   │           │   │   └── StandardError.java
-│   │           │   └── ResourceNotFoundException.java
-│   │           ├── mappers
-│   │           │   ├── BuyItemMapper.java
-│   │           │   ├── BuyMapper.java
-│   │           │   ├── CategoryMapper.java
-│   │           │   ├── ClientMapper.java
-│   │           │   ├── MarkMapper.java
-│   │           │   └── ProductMapper.java
-│   │           ├── repositories
-│   │           │   ├── BuyItemRepository.java
-│   │           │   ├── BuyRepository.java
-│   │           │   ├── CategoryRepository.java
-│   │           │   ├── ClientRepository.java
-│   │           │   ├── MarkRepository.java
-│   │           │   └── ProductRepository.java
-│   │           ├── services
-│   │           │   ├── BuyItemService.java
-│   │           │   ├── BuyService.java
-│   │           │   ├── CategoryService.java
-│   │           │   ├── ClientService.java
-│   │           │   ├── MarkService.java
-│   │           │   └── ProductService.java
-│   │           └── SupermarketSystemApplication.java
-│   └── resources
-│       └── application.yaml
-└── test
-    └── java
-        └── com
-            └── alexdev
-                └── SupermarketSystemApplicationTests.java
+Controller
+    ↓
+Service
+    ↓
+Repository
+    ↓
+Database
+```
+
+Organização dos pacotes:
+
+```text
+config/
+controllers/
+domain/
+ ├── entities/
+ └── enums/
+dtos/
+ ├── request/
+ └── response/
+exceptions/
+mappers/
+repositories/
+services/
+resources/
+ └── db/migration/
 ```
 
 ---
 
-## Funcionalidades
+## 📚 Regras de negócio
 
-- Cadastro e consulta de produtos
-- Cadastro de categorias
-- Cadastro de marcas
-- Cadastro de clientes
-- Registro de compras e itens da compra
-- Validações de regras de negócio
-- Tratamento global de exceções
-
----
-
-## Regras de negócio
-
-- Uma marca não pode ser removida se estiver associada a produtos
-- Um produto não pode ser removido se estiver associado a compras
-- Compras e itens de compra não podem ser alterados ou removidos após criados
-- Validações de dados obrigatórios na criação de recursos
+- Clientes possuem status (ACTIVE / INACTIVE).
+- Produtos possuem status.
+- Vendas possuem controle de status.
+- Não é permitido cadastrar registros duplicados quando houver restrições de unicidade.
+- Exclusões respeitam relacionamentos entre entidades.
+- Todas as entradas são validadas antes do processamento.
+- As respostas de erro seguem um padrão único.
 
 ---
 
-## Como executar o projeto
+## 🗄 Banco de dados
 
-### 1. Clone o repositório
+O projeto utiliza **Flyway** para versionamento do banco de dados.
+
+As migrações ficam em:
+
+```text
+src/main/resources/db/migration
+```
+
+Ao iniciar a aplicação, todas as migrações são executadas automaticamente.
+
+---
+
+## 📖 Documentação da API
+
+Após iniciar a aplicação:
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+---
+
+## 🚀 Como executar
+
+### Clone o projeto
 
 ```bash
 git clone https://github.com/AlexbarrosDev/supermarket-system.git
 ```
 
-### 2. Configure o arquivo .yaml
+### Entre no projeto
 
-- configurar suas credenciais de banco de dados
-- mudar para test (profile -> active -> test), isso irá popular o banco de dados
+```bash
+cd supermarket-system
+```
 
-### 3. Executar o projeto
+### Configure o banco de dados
+
+Edite o arquivo:
+
+```text
+src/main/resources/application.yaml
+```
+
+Configure:
+
+- URL
+- Usuário
+- Senha
+
+### Execute
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-### 4. Abra o Postman
+ou
 
-- Teste os endpoints abaixo
+```bash
+mvn spring-boot:run
+```
 
-## Lista de Endpoints da API
+---
 
-### Marks
+## 📌 Endpoints
 
-- GET    /marks
-- GET    /marks/{id}
-- POST   /marks
-- DELETE /marks/{id}
+### Clientes
 
-Observação:
+- GET /clients
+- GET /clients/{id}
+- POST /clients
+- PUT /clients/{id}
+- PATCH /clients/{id}/status
 
-Não permite exclusão se a marca estiver associada a produtos.
+### Produtos
 
-### Categories
+- GET /products
+- GET /products/{id}
+- POST /products
+- PUT /products/{id}
+- PATCH /products/{id}/status
 
-- GET    /categories
-- GET    /categories/{id}
-- POST   /categories
-- DELETE /categories/{id}
+### Categorias
 
-Observação:
+- GET /categories
+- GET /categories/{id}
+- POST /categories
+- PUT /categories/{id}
 
-Não permite exclusão se a categoria estiver associada a produtos.
+### Grupos
 
-### Products
+- GET /groups
+- GET /groups/{id}
+- POST /groups
+- PUT /groups/{id}
 
-- GET    /products
-- GET    /products/{id}
-- POST   /products
-- DELETE /products/{id}
+### Vendas
 
-Observação:
+- GET /sales
+- GET /sales/{id}
+- POST /sales
+- PATCH /sales/{id}/status
 
-Não permite exclusão se o produto estiver associado a itens de compra.
+---
 
-### Clients
+## 📈 Próximas melhorias
 
-- GET    /clients
-- GET    /clients/{id}
-- POST   /clients
+- Testes unitários
+- Testes de integração
+- Docker
+- CI/CD com GitHub Actions
+- Autenticação com Spring Security + JWT
+- Paginação e filtros
+- Front-end integrado
 
-Observação:
+---
 
-Clientes não podem ser removidos após realizarem compras.
+## 👨‍💻 Autor
 
+**Alex Barros**
 
-### Buys
+Estudante de Análise e Desenvolvimento de Sistemas
 
-- GET    /buys
-- GET    /buys/{id}
-- POST   /buys
+Back-end Java Developer
 
-Observação:
+📍 Itapetininga - SP
 
-Compras não podem ser alteradas ou removidas após criadas.
+---
 
-## Autor
+## 📬 Contato
 
-**Autor:** Alex Barros
-- Itapetininga - SP
-- Estudante de ADS / Desenvolvedor Back-End Java
-
-## Contato
-
-- LinkedIn: [Alex Barros](https://www.linkedin.com/in/alex-barros-dev)
+- LinkedIn: https://www.linkedin.com/in/alex-barros-dev
 - Email: alexbarros.dev@gmail.com
-
-
-
 
 
 
