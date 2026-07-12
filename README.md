@@ -84,6 +84,13 @@ resources/
  └── db/migration/
 ```
 
+## 💻 Front-end
+
+Este repositório inclui uma aplicação front-end apenas para demonstrar o consumo da API.
+
+O foco deste projeto é o desenvolvimento da API REST. 
+O front-end foi desenvolvido com auxílio de Inteligência Artificial e recebeu apenas adaptações para integração com esta API. 
+Seu objetivo é servir como interface de demonstração das funcionalidades do back-end.
 ---
 
 ## 📚 Regras de negócio
