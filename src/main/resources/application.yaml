@@ -1,5 +1,15 @@
 spring:
 
+  application:
+    name:   supermarket-system
+
+  devtools:
+    restart:
+      enabled: true
+
+  profiles:
+    active: false
+
   mvc:
     throw-exception-if-no-handler-found: true
 
@@ -7,30 +17,22 @@ spring:
     resources:
       add-mappings: false
 
-  application:
-    name: supermarket-system
-
-  profiles:
-    active: false
-
   datasource:
-    url: jdbc:mysql://localhost:3306/supermarket_provasi?useTimezone=true&serverTimezone=UTC
-
-    username: app_user
-
-    password: senha123
+    url:      jdbc:mysql://localhost:3306/supermarket?useTimezone=true&serverTimezone=UTC
+    username: developer
+    password: 198106
 
   jpa:
-
     hibernate:
-      ddl-auto: update
-
+      ddl-auto:   validate
     open-in-view: false
+    show-sql:     true
 
-    show-sql: true
+  flyway:
+    enabled: true
+    validate-on-migrate: true
 
 logging:
-
   level:
     root: WARN
     br.com.alexdev: DEBUG
