@@ -1,0 +1,5 @@
+ALTER TABLE tb_product
+ADD COLUMN status VARCHAR(20) NOT NULL;
+
+ALTER TABLE tb_product
+ADD COLUMN created_at DATETIME(6) NOT NULL;

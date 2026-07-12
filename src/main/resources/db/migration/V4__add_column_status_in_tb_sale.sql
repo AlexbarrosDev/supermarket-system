@@ -1,0 +1,2 @@
+ALTER TABLE tb_sale
+ADD COLUMN status VARCHAR(20) NOT NULL;
