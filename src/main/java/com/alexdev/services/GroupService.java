@@ -51,6 +51,8 @@ public class GroupService {
     @Transactional
     public GroupDetailsDTO createGroup(GroupCreateDTO groupCreateDTO) {
 
+        validateCreateNameUniqueness(groupCreateDTO.name());
+
         Group entity = groupRepository
                         .save(groupMapper
                         .groupCreateDTOToGroupEntity(groupCreateDTO));
@@ -61,16 +63,18 @@ public class GroupService {
     @Transactional
     public GroupDetailsDTO updateGroup(Long id, GroupUpdateDTO groupUpdateDTO) {
 
-        validateUpdateNameUniqueness(groupUpdateDTO.name());
-
         Group group = groupRepository
                 .findById(id)
                 .orElseThrow(()
                 -> new ResourceNotFoundException("Group not found with id " + id));
 
+        if (groupRepository.existsByNameAndIdNot(group.getName(), id)) {
+            throw new BusinessException("Group already exists");
+        }
+
         group.setName(groupUpdateDTO.name());
         return groupMapper
-                .groupEntityToGroupDetailsDTO(groupRepository.save(group));
+                .groupEntityToGroupDetailsDTO(group);
     }
 
     @Transactional
@@ -91,10 +95,10 @@ public class GroupService {
         groupRepository.delete(group);
     }
 
-    private void validateUpdateNameUniqueness(String name) {
+    private void validateCreateNameUniqueness(String name) {
 
         if (groupRepository.existsByName(name)) {
-            throw new BusinessException("Update already exists.");
+            throw new BusinessException("Group already exists.");
         }
     }
 }

@@ -52,7 +52,7 @@ public class CategoryService {
     @Transactional
     public CategoryDetailsDTO createCategory(CategoryCreateDTO categoryUpdateDTO) {
 
-        validateCategoryNameUniqueness(categoryUpdateDTO.name());
+        validateCreateNameUniqueness(categoryUpdateDTO.name());
 
         var entity = categoryMapper
                 .categoryCreateDTOToCategoryEntity(categoryUpdateDTO);
@@ -64,12 +64,14 @@ public class CategoryService {
     @Transactional
     public CategoryDetailsDTO updateCategory(Long id, CategoryUpdateDTO categoryUpdateDTO) {
 
-        validateCategoryNameUniqueness(categoryUpdateDTO.name());
-
         Category category = categoryRepository
                 .findById(id)
                 .orElseThrow(()
-                -> new ResourceNotFoundException("Category not found"));
+                -> new ResourceNotFoundException("Category not found" + id));
+
+        if (categoryRepository.existsByNameAndIdNot(category.getName(), id)) {
+            throw new BusinessException("Category already exists");
+        }
 
         category.setName(categoryUpdateDTO.name());
 
@@ -91,7 +93,7 @@ public class CategoryService {
         categoryRepository.delete(category);
     }
 
-    private void validateCategoryNameUniqueness(String name) {
+    private void validateCreateNameUniqueness(String name) {
 
         if (categoryRepository.existsByName(name)) {
             throw new BusinessException("Category already exists.");
