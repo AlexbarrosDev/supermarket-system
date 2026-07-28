@@ -17,14 +17,14 @@ import java.util.List;
 )
 public interface SaleMapper {
 
-    Sale saleRequestDTOToSaleEntity(SaleCreateDTO saleCreateDTO);
+    Sale saleCreateDTOToSaleEntity(SaleCreateDTO saleCreateDTO);
 
     @Mapping(target = "total", source = "total")
     SaleDetailsDTO saleEntityToSaleDetailsDTO(Sale saleEntity);
 
-    List<Sale> saleRequestDTOListToSaleEntityList(List<SaleCreateDTO> saleCreateDTOList);
+    List<Sale> saleCreateDTOListToSaleEntityList(List<SaleCreateDTO> sales);
 
-    List<SaleDetailsDTO> saleEntityListToSaleDetailsDTOList(List<Sale> saleList);
+    List<SaleDetailsDTO> saleEntityListToSaleDetailsDTOList(List<Sale> sales);
 
-    List<SaleSummaryDTO> saleEntityListToSaleSummaryDTOList(List<Sale> saleList);
+    List<SaleSummaryDTO> saleEntityListToSaleSummaryDTOList(List<Sale> sales);
 }

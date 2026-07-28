@@ -55,7 +55,7 @@ public class CategoryService {
         validateCategoryNameUniqueness(categoryUpdateDTO.name());
 
         var entity = categoryMapper
-                .categoryRequestDTOToCategoryEntity(categoryUpdateDTO);
+                .categoryCreateDTOToCategoryEntity(categoryUpdateDTO);
 
         return categoryMapper
                 .categoryEntityToCategoryDetailsDTO(categoryRepository.save(entity));

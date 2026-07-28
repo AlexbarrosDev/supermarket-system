@@ -2,7 +2,6 @@ package com.alexdev.services;
 
 import com.alexdev.domain.entities.Category;
 import com.alexdev.domain.entities.Group;
-import com.alexdev.domain.enums.ProductStatus;
 import com.alexdev.dtos.request.product.ProductCreateDTO;
 import com.alexdev.dtos.request.product.ProductStatusUpdateDTO;
 import com.alexdev.dtos.request.product.ProductUpdateDTO;
@@ -63,7 +62,7 @@ public class ProductService {
     @Transactional
     public ProductDetailsDTO createProduct(ProductCreateDTO productCreateDTO) {
 
-        Product entity = productMapper.productRequestDTOToProductEntity(productCreateDTO);
+        Product entity = productMapper.productCreateDTOToProductEntity(productCreateDTO);
 
         entity.setCategory(getCategoryOrThrow(productCreateDTO.categoryId()));
         entity.setGroup(getGroupOrThrow(productCreateDTO.groupId()));

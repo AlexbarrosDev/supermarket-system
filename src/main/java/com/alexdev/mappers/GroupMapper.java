@@ -10,11 +10,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface GroupMapper {
 
-    Group groupRequestDTOToGroupEntity(GroupCreateDTO groupCreateDTO);
+    Group groupCreateDTOToGroupEntity(GroupCreateDTO groupCreateDTO);
 
     GroupDetailsDTO groupEntityToGroupDetailsDTO(Group group);
 
-    List<Group> groupRequestDTOToGroupEntity(List<GroupCreateDTO> groupsRequestDTO);
+    List<Group> groupCreateDTOToGroupEntity(List<GroupCreateDTO> groups);
 
     List<GroupDetailsDTO> groupEntityListToGroupDetailsDTOList(List<Group> groups);
 }

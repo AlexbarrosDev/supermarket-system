@@ -97,7 +97,7 @@ public class SaleService {
 
     private SaleDetailsDTO buildSale(SaleCreateDTO sale) {
 
-        Sale entity = saleMapper.saleRequestDTOToSaleEntity(sale);
+        Sale entity = saleMapper.saleCreateDTOToSaleEntity(sale);
 
         entity.setClient(getClientOrThrow(sale.clientId()));
 

@@ -53,7 +53,7 @@ public class GroupService {
 
         Group entity = groupRepository
                         .save(groupMapper
-                        .groupRequestDTOToGroupEntity(groupCreateDTO));
+                        .groupCreateDTOToGroupEntity(groupCreateDTO));
 
         return groupMapper.groupEntityToGroupDetailsDTO(entity);
     }

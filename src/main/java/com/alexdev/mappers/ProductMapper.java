@@ -16,14 +16,13 @@ import java.util.List;
         })
 public interface ProductMapper {
 
-
-    Product productRequestDTOToProductEntity(ProductCreateDTO productCreateDTO);
+    Product productCreateDTOToProductEntity(ProductCreateDTO productCreateDTO);
 
     ProductDetailsDTO productEntityToProductDetailsDTO(Product product);
 
     ProductSummaryDTO productEntityToProductSummaryDTO(Product product);
 
-    List<Product> productRequestDTOListToProductEntityList(List<ProductCreateDTO> productsRequestDTO);
+    List<Product> productCreateDTOListToProductEntityList(List<ProductCreateDTO> products);
 
     List<ProductDetailsDTO> productEntityListToProductDetailsDTOList(List<Product> products);
 

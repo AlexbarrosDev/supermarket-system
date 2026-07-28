@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
 
-    Address addressRequestDTOToAddressEntity(AddressCreateDTO addressCreateDTO);
+    Address addressCreateDTOToAddressEntity(AddressCreateDTO addressCreateDTO);
 
     AddressDetailsDTO addressEntityToAddressDetailsDTO(Address address);
 

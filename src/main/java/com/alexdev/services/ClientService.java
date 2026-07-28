@@ -63,7 +63,7 @@ public class ClientService {
         Client entity = clientMapper.clientRequestDTOToClientEntity(clientCreateDTO);
 
         Address address = addressMapper
-                .addressRequestDTOToAddressEntity(clientCreateDTO.address());
+                .addressCreateDTOToAddressEntity(clientCreateDTO.address());
 
         entity.setAddress(address);
 

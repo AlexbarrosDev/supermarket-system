@@ -17,7 +17,7 @@ public interface ClientMapper {
 
     ClientSummaryDTO clientEntityToClientSummaryDTO(Client client);
 
-    List<Client> clientRequestDTOListToClientList(List<ClientCreateDTO> clientsRequestDTO);
+    List<Client> clientCreateDTOListToClientList(List<ClientCreateDTO> clients);
 
     List<ClientDetailsDTO> clientEntityListToClientDetailsDTOList(List<Client> clients);
 
