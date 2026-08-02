@@ -69,7 +69,7 @@ public class CategoryService {
                 .orElseThrow(()
                 -> new ResourceNotFoundException("Category not found" + id));
 
-        if (categoryRepository.existsByNameAndIdNot(category.getName(), id)) {
+        if (categoryRepository.existsByNameAndIdNot(categoryUpdateDTO.name(), id)) {
             throw new BusinessException("Category already exists");
         }
 
