@@ -38,10 +38,11 @@ Além das funcionalidades de CRUD, o sistema implementa validações para garant
 ## 🛠 Tecnologias
 
 - Java 21
-- Spring Boot 3.5
+- Spring Boot 3.x
 - Spring Data JPA
 - Hibernate
 - MySQL
+- H2 (testes)
 - Flyway
 - MapStruct
 - Lombok
@@ -214,13 +215,10 @@ mvn spring-boot:run
 
 ## 📈 Próximas melhorias
 
-- Testes unitários
-- Testes de integração
-- Docker
-- CI/CD com GitHub Actions
+- Testes (JUnit + Mockito)
 - Autenticação com Spring Security + JWT
-- Paginação e filtros
-- Front-end integrado
+- Melhorar a implementação do Swagger
+- Docker
 
 ---
 
