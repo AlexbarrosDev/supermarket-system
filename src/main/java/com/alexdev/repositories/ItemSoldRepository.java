@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface ItemSoldRepository extends JpaRepository<ItemSold, Long> {
 
     boolean existsByProductId(Long productId);
-
-    boolean existsBySaleId(Long saleId);
 }
