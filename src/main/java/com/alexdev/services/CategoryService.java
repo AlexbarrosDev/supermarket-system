@@ -54,11 +54,13 @@ public class CategoryService {
 
         validateCreateNameUniqueness(categoryUpdateDTO.name());
 
-        var entity = categoryMapper
+        Category entity = categoryMapper
                 .categoryCreateDTOToCategoryEntity(categoryUpdateDTO);
 
+        entity = categoryRepository.save(entity);
+
         return categoryMapper
-                .categoryEntityToCategoryDetailsDTO(categoryRepository.save(entity));
+                .categoryEntityToCategoryDetailsDTO(entity);
     }
 
     @Transactional

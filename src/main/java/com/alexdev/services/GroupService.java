@@ -53,9 +53,10 @@ public class GroupService {
 
         validateCreateNameUniqueness(groupCreateDTO.name());
 
-        Group entity = groupRepository
-                        .save(groupMapper
-                        .groupCreateDTOToGroupEntity(groupCreateDTO));
+        Group entity = groupMapper
+                        .groupCreateDTOToGroupEntity(groupCreateDTO);
+
+        entity = groupRepository.save(entity);
 
         return groupMapper.groupEntityToGroupDetailsDTO(entity);
     }
