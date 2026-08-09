@@ -47,7 +47,7 @@ public class ItemSold implements Serializable {
     }
 
     public BigDecimal getSubTotal() {
-        return unitPrice.multiply(BigDecimal.valueOf(quantity));
 
+        return unitPrice.multiply(BigDecimal.valueOf(quantity))
     }
 }
