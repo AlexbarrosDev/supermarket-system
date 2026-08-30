@@ -2,7 +2,7 @@ package com.alexdev.mappers;
 
 import com.alexdev.dtos.request.category.CategoryCreateDTO;
 import com.alexdev.dtos.response.category.CategoryDetailsDTO;
-import com.alexdev.domain.entities.Category;
+import com.alexdev.domain.category.Category;
 import org.mapstruct.Mapper;
 
 import java.util.List;

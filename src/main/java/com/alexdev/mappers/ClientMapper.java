@@ -1,8 +1,9 @@
 package com.alexdev.mappers;
 
 import com.alexdev.dtos.request.client.ClientCreateDTO;
+import com.alexdev.dtos.request.client.ClientUpdateDTO;
 import com.alexdev.dtos.response.client.ClientDetailsDTO;
-import com.alexdev.domain.entities.Client;
+import com.alexdev.domain.client.Client;
 import com.alexdev.dtos.response.client.ClientSummaryDTO;
 import org.mapstruct.Mapper;
 
@@ -11,7 +12,9 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {AddressMapper.class})
 public interface ClientMapper {
 
-    Client clientRequestDTOToClientEntity(ClientCreateDTO clientCreateDTO);
+    Client clientCreateDTOToClientEntity(ClientCreateDTO clientCreateDTO);
+
+    Client clientUpdateDTOToClientEntity(ClientUpdateDTO clientUpdateDTO);
 
     ClientDetailsDTO clientEntityToClientDetailsDTO(Client client);
 

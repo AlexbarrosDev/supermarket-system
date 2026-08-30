@@ -2,7 +2,7 @@ package com.alexdev.mappers;
 
 import com.alexdev.dtos.request.group.GroupCreateDTO;
 import com.alexdev.dtos.response.group.GroupDetailsDTO;
-import com.alexdev.domain.entities.Group;
+import com.alexdev.domain.group.Group;
 import org.mapstruct.Mapper;
 
 import java.util.List;

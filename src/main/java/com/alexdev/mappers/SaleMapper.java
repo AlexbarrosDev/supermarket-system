@@ -2,7 +2,7 @@ package com.alexdev.mappers;
 
 import com.alexdev.dtos.request.sale.SaleCreateDTO;
 import com.alexdev.dtos.response.sale.SaleDetailsDTO;
-import com.alexdev.domain.entities.Sale;
+import com.alexdev.domain.sale.Sale;
 import com.alexdev.dtos.response.sale.SaleSummaryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -3,7 +3,7 @@ package com.alexdev.mappers;
 import com.alexdev.dtos.request.product.ProductCreateDTO;
 import com.alexdev.dtos.response.product.ProductSummaryDTO;
 import com.alexdev.dtos.response.product.ProductDetailsDTO;
-import com.alexdev.domain.entities.Product;
+import com.alexdev.domain.product.Product;
 import org.mapstruct.Mapper;
 
 import java.util.List;
