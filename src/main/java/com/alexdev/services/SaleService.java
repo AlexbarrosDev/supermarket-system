@@ -1,14 +1,14 @@
 package com.alexdev.services;
 
-import com.alexdev.domain.entities.Client;
-import com.alexdev.domain.enums.SaleStatus;
+import com.alexdev.domain.client.Client;
+import com.alexdev.domain.sale.SaleStatus;
 import com.alexdev.dtos.request.sale.ItemSoldCreateDTO;
 import com.alexdev.dtos.request.sale.SaleCreateDTO;
 import com.alexdev.dtos.request.sale.SaleStatusUpdateDTO;
 import com.alexdev.dtos.response.sale.SaleDetailsDTO;
-import com.alexdev.domain.entities.ItemSold;
-import com.alexdev.domain.entities.Product;
-import com.alexdev.domain.entities.Sale;
+import com.alexdev.domain.itemSold.ItemSold;
+import com.alexdev.domain.product.Product;
+import com.alexdev.domain.sale.Sale;
 import com.alexdev.dtos.response.sale.SaleSummaryDTO;
 import com.alexdev.exceptions.BusinessException;
 import com.alexdev.exceptions.ResourceNotFoundException;

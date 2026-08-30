@@ -1,6 +1,6 @@
 package com.alexdev.services;
 
-import com.alexdev.domain.entities.Group;
+import com.alexdev.domain.group.Group;
 import com.alexdev.dtos.request.group.GroupCreateDTO;
 import com.alexdev.dtos.request.group.GroupUpdateDTO;
 import com.alexdev.dtos.response.group.GroupDetailsDTO;
@@ -69,11 +69,12 @@ public class GroupService {
                 .orElseThrow(()
                 -> new ResourceNotFoundException("Group not found with id " + id));
 
-        if (groupRepository.existsByNameAndIdNot(group.getName(), id)) {
+        if (groupRepository.existsByNameAndIdNot(groupUpdateDTO.name(), id)) {
             throw new BusinessException("Group already exists");
         }
 
         group.setName(groupUpdateDTO.name());
+
         return groupMapper
                 .groupEntityToGroupDetailsDTO(group);
     }

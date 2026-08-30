@@ -1,11 +1,11 @@
 package com.alexdev.services;
 
-import com.alexdev.domain.entities.Address;
+import com.alexdev.domain.address.Address;
 import com.alexdev.dtos.request.client.ClientCreateDTO;
 import com.alexdev.dtos.request.client.ClientStatusUpdateDTO;
 import com.alexdev.dtos.request.client.ClientUpdateDTO;
 import com.alexdev.dtos.response.client.ClientDetailsDTO;
-import com.alexdev.domain.entities.Client;
+import com.alexdev.domain.client.Client;
 import com.alexdev.dtos.response.client.ClientSummaryDTO;
 import com.alexdev.exceptions.BusinessException;
 import com.alexdev.exceptions.ResourceNotFoundException;
@@ -28,8 +28,6 @@ public class ClientService {
     private final SaleRepository saleRepository;
 
     private final ClientMapper clientMapper;
-
-    private final AddressMapper addressMapper;
 
     @Transactional(readOnly = true)
     public List<ClientSummaryDTO> findAllClients() {
@@ -60,12 +58,7 @@ public class ClientService {
 
         validateCpfUniqueness(clientCreateDTO.cpf());
 
-        Client entity = clientMapper.clientRequestDTOToClientEntity(clientCreateDTO);
-
-        Address address = addressMapper
-                .addressCreateDTOToAddressEntity(clientCreateDTO.address());
-
-        entity.setAddress(address);
+        Client entity = clientMapper.clientCreateDTOToClientEntity(clientCreateDTO);
 
         return clientMapper
                 .clientEntityToClientDetailsDTO(clientRepository.save(entity));
@@ -78,17 +71,7 @@ public class ClientService {
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
 
-        Address address = client.getAddress();
-
-        address.setStreet(clientUpdateDTO.address().street());
-        address.setCity(clientUpdateDTO.address().city());
-        address.setState(clientUpdateDTO.address().state());
-        address.setNumber(clientUpdateDTO.address().number());
-        address.setZip(clientUpdateDTO.address().zip());
-
-        client.setName(clientUpdateDTO.name());
-        client.setPhone(clientUpdateDTO.phone());
-        client.setAddress(address);
+        client = clientMapper.clientUpdateDTOToClientEntity(clientUpdateDTO);
 
         return clientMapper
                 .clientEntityToClientDetailsDTO(client);

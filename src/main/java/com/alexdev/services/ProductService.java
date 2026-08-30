@@ -1,12 +1,12 @@
 package com.alexdev.services;
 
-import com.alexdev.domain.entities.Category;
-import com.alexdev.domain.entities.Group;
+import com.alexdev.domain.category.Category;
+import com.alexdev.domain.group.Group;
 import com.alexdev.dtos.request.product.ProductCreateDTO;
 import com.alexdev.dtos.request.product.ProductStatusUpdateDTO;
 import com.alexdev.dtos.request.product.ProductUpdateDTO;
 import com.alexdev.dtos.response.product.ProductDetailsDTO;
-import com.alexdev.domain.entities.Product;
+import com.alexdev.domain.product.Product;
 import com.alexdev.dtos.response.product.ProductSummaryDTO;
 import com.alexdev.exceptions.BusinessException;
 import com.alexdev.exceptions.ResourceNotFoundException;

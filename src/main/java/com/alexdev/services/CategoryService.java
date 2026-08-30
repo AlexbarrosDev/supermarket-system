@@ -1,6 +1,6 @@
 package com.alexdev.services;
 
-import com.alexdev.domain.entities.Category;
+import com.alexdev.domain.category.Category;
 import com.alexdev.dtos.request.category.CategoryCreateDTO;
 import com.alexdev.dtos.request.category.CategoryUpdateDTO;
 import com.alexdev.dtos.response.category.CategoryDetailsDTO;
