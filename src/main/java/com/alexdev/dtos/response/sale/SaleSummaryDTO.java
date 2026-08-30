@@ -1,6 +1,6 @@
 package com.alexdev.dtos.response.sale;
 
-import com.alexdev.domain.enums.SaleStatus;
+import com.alexdev.domain.sale.SaleStatus;
 import com.alexdev.dtos.response.client.ClientSummaryDTO;
 
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
 package com.alexdev.dtos.response.client;
 
-import com.alexdev.domain.enums.ClientStatus;
+import com.alexdev.domain.client.ClientStatus;
 import com.alexdev.dtos.response.address.AddressDetailsDTO;
 
 import java.time.Instant;

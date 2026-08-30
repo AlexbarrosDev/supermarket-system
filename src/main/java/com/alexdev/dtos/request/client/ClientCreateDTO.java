@@ -1,6 +1,6 @@
 package com.alexdev.dtos.request.client;
 
-import com.alexdev.domain.enums.ClientStatus;
+import com.alexdev.domain.client.ClientStatus;
 import com.alexdev.dtos.request.address.AddressCreateDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

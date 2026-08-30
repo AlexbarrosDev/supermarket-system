@@ -1,6 +1,6 @@
 package com.alexdev.dtos.response.product;
 
-import com.alexdev.domain.enums.ProductStatus;
+import com.alexdev.domain.product.ProductStatus;
 import com.alexdev.dtos.response.category.CategoryDetailsDTO;
 import com.alexdev.dtos.response.group.GroupDetailsDTO;
 

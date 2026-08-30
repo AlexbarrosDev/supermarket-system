@@ -1,6 +1,6 @@
 package com.alexdev.dtos.request.client;
 
-import com.alexdev.domain.enums.ClientStatus;
+import com.alexdev.domain.client.ClientStatus;
 import jakarta.validation.constraints.NotNull;
 
 
