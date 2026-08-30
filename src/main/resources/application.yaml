@@ -1,38 +1,42 @@
 spring:
-
   application:
-    name:   supermarket-system
+    name: supermarket-system # Define o nome da aplicação Spring Boot
 
   devtools:
     restart:
-      enabled: true
+      enabled: true # Reinicia automaticamente a aplicação ao detectar alterações no código
 
   profiles:
-    active: false
+    active: false # Define qual profile está ativo; esse valor "false" é incomum e pode estar incorreto
 
   mvc:
-    throw-exception-if-no-handler-found: true
+    throw-exception-if-no-handler-found: true # Faz o Spring lançar exceção quando nenhuma rota/controller é encontrada
 
   web:
     resources:
-      add-mappings: false
+      add-mappings: false # Desabilita o mapeamento automático de recursos estáticos, como HTML, CSS e JS
 
   datasource:
-    url:      jdbc:mysql://localhost:3306/supermarket?useTimezone=true&serverTimezone=UTC
-    username: developer
-    password: 198106
+    url:      ${DB_URL}      # URL de conexão com o banco MySQL
+    username: ${DB_USERNAME} # Usuário utilizado para acessar o banco de dados
+    password: ${DB_PASSWORD} # Senha utilizada para acessar o banco de dados
 
   jpa:
     hibernate:
-      ddl-auto:   validate
-    open-in-view: false
-    show-sql:     true
+      ddl-auto:   validate # Apenas valida se as entidades correspondem à estrutura existente no banco
+    open-in-view: false    # Impede que a sessão do Hibernate permaneça aberta até o fim da requisição HTTP
+    show-sql:     true     # Exibe no console os comandos SQL executados pelo Hibernate
 
   flyway:
-    enabled: true
-    validate-on-migrate: true
+    enabled: true # Habilita o Flyway para gerenciamento de migrations do banco
+    validate-on-migrate: true # Valida as migrations existentes antes de executar novas migrations
 
 logging:
   level:
-    root: WARN
-    br.com.alexdev: DEBUG
+    root: WARN # Exibe apenas logs de nível WARN ou superior por padrão
+    br.com.alexdev: DEBUG # Exibe logs DEBUG ou superiores para as classes desse pacote
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET} # Obtém a chave secreta do JWT através da variável de ambiente JWT_SECRET
