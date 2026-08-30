@@ -1,5 +1,6 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.address;
 
+import com.alexdev.domain.client.Client;
 import jakarta.persistence.*;
 import lombok.*;
 

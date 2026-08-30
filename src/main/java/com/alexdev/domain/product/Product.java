@@ -1,6 +1,7 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.product;
 
-import com.alexdev.domain.enums.ProductStatus;
+import com.alexdev.domain.category.Category;
+import com.alexdev.domain.group.Group;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

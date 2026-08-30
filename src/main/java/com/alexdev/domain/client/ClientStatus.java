@@ -1,4 +1,4 @@
-package com.alexdev.domain.enums;
+package com.alexdev.domain.client;
 
 public enum ClientStatus {
 

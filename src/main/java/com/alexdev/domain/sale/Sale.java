@@ -1,6 +1,7 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.sale;
 
-import com.alexdev.domain.enums.SaleStatus;
+import com.alexdev.domain.client.Client;
+import com.alexdev.domain.itemSold.ItemSold;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.client;
 
-import com.alexdev.domain.enums.ClientStatus;
+import com.alexdev.domain.address.Address;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

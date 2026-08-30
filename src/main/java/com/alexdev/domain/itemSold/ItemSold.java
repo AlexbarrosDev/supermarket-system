@@ -1,5 +1,7 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.itemSold;
 
+import com.alexdev.domain.product.Product;
+import com.alexdev.domain.sale.Sale;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -48,6 +50,6 @@ public class ItemSold implements Serializable {
 
     public BigDecimal getSubTotal() {
 
-        return unitPrice.multiply(BigDecimal.valueOf(quantity))
+        return unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
 }

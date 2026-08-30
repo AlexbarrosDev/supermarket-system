@@ -1,4 +1,4 @@
-package com.alexdev.domain.entities;
+package com.alexdev.domain.group;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;

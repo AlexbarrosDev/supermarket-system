@@ -1,4 +1,4 @@
-package com.alexdev.domain.enums;
+package com.alexdev.domain.product;
 
 public enum ProductStatus {
 
